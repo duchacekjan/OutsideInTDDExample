@@ -1,5 +1,9 @@
 package com.jgs.outsideintddexample
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
 class Car(
     val engine: Engine,
     fuel: Double
@@ -11,6 +15,8 @@ class Car(
 
     fun turnOn() {
         myFuel -= 0.5
-        engine.turnOn()
+        CoroutineScope(Dispatchers.Main).launch {
+            engine.turnOn()
+        }
     }
 }
